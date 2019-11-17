@@ -24,7 +24,7 @@ gem 'prawn-rails'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem "brakeman", require: false
+# gem "brakeman", require: false
 
 # Cms
 # gem "typus", github: "typus/typus"

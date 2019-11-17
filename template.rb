@@ -26,7 +26,7 @@ def utils_dev
   say "install mailcatcher"
 
   # robocop
-  "gem install rubocop-performance"
+  run "gem install rubocop-performance"
   copy_file "rubocop.yml", ".rubocop.yml"
 
 end
@@ -83,6 +83,10 @@ def config_test
 
 end
 
+def devops
+  copy_file "Dockerfile", "Dockerfile"
+  say "docker build ."
+end
 
 def main
   config_bundle
@@ -90,6 +94,7 @@ def main
   database
   utils_dev
   config_test
+  devops
 
 end
 
