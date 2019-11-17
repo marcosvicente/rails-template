@@ -3,33 +3,26 @@ def source_paths
   [__dir__]
 end
 
-def gems_test 
-  gem_group :development, :test do
-    gem "rspec-rails"
-    gem 'ffaker'
-    gem 'rspec-rails'
-    gem 'database_cleaner'
-    gem 'capybara'
-    gem 'factory_bot_rails'
+def config_bundle
+  run "rm -r Gemfile"
+  copy_file "gemtemplate", "Gemfile"
+  mailcatcher_config
 
-  end
+end
 
-  gem_group :test do
-    gem 'webdrivers'
-    gem 'chromedriver-helper'
-    gem 'rails-controller-testing'
-    gem 'shoulda-matchers', '~> 3.1'
-    gem 'simplecov'
+def mailcatcher_config
+  run "gem install mailcatcher"
+  say "install mailcatcher"
+end
 
-  end
-
-  say "Put gems to test"
+def environments_development
+  run "rm -r config/environments/development.rb"
+  copy_file "config/environments/development.rb", "config/environments/development.rb"
 
 end
 
 def config_rspec
   rails_command "generate rspec:install"
-
   say "config rspec"
 
 end
@@ -67,7 +60,6 @@ def config_test_support
 end
 
 def config_test 
-  gems_test
   config_rspec
   config_test_support
   # remove mine test
@@ -77,6 +69,8 @@ end
 
 
 def main
+  config_bundle
+  environments_development
   config_test
 
 end
