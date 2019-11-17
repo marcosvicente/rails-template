@@ -6,7 +6,6 @@ end
 def config_bundle
   run "rm -r Gemfile"
   copy_file "gemtemplate", "Gemfile"
-  mailcatcher_config
 
 end
 
@@ -15,13 +14,16 @@ def database
   copy_file "config/database.yml", "config/database.yml"
 
 end
-def mailcatcher_config
+
+def utils_dev
+  # mailcatcher
   run "gem install mailcatcher"
   say "install mailcatcher"
-end
 
-def robocop
-  copy_file "robocop.yml" ".robocop.yml"
+  # robocop
+  "gem install rubocop-performance"
+  copy_file "rubocop.yml", ".rubocop.yml"
+
 end
 
 def environments_development
@@ -81,6 +83,7 @@ def main
   config_bundle
   environments_development
   database
+  utils_dev
   config_test
 
 end
