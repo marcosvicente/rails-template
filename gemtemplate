@@ -10,7 +10,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
-gem 'pry-rails', :group => :development
+gem 'annotate'
 
 # gem 'jquery-rails'
 # gem "font-awesome-rails"
@@ -24,21 +24,44 @@ gem 'prawn-rails'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'rubocop-rails'
-gem 'rubocop-performance'
+gem "brakeman", require: false
 
-group :development, :test do
-    gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
+# Cms
+# gem "typus", github: "typus/typus"
+# gem "activeadmin"
+# gem "fae-rails"
+# gem 'rails_admin', '~> 2.0'
+
+# Admin theme
+# gem 'active_skin'
+# gem "active_admin_import"
+# gem 'flattened_active_admin'
+
+
+# gem 'face_of_active_admin'
+# gem install active_admin_theme
+
+# gem 'cancancan'
+# gem 'devise'
 
 group :development do
     gem 'web-console', '>= 3.3.0'
     gem 'listen', '>= 3.0.5', '< 3.2'
     gem 'spring'
     gem 'spring-watcher-listen', '~> 2.0.0'
-
+    gem 'pry-rails'
     gem "better_errors"
     gem "binding_of_caller"
+    gem "awesome_print"
+    gem 'railroady'
+    gem 'annotate'
+    gem "rails_db", "1.6"
+    gem 'rubocop-rails', require: false
+    gem "rubocop", ">= 0.70.0", require: false
+    gem "rubocop-performance", require: false
+    gem "rubycritic", require: false
+
+
 
 end
 
@@ -46,10 +69,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
+
+    gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
     gem 'rspec-rails'
     gem 'ffaker'
     gem 'database_cleaner'
     gem 'factory_bot_rails'
+
 end
 
 group :test do

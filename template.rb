@@ -15,6 +15,11 @@ def database
 
 end
 
+def require_system
+  run "sudo apt-get install graphviz advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush pngquant"
+
+end
+
 def utils_dev
   # mailcatcher
   run "gem install mailcatcher"
