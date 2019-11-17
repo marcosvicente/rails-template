@@ -15,6 +15,10 @@ def mailcatcher_config
   say "install mailcatcher"
 end
 
+def robocop
+  copy_file "robocop.yml" ".robocop.yml"
+end
+
 def environments_development
   run "rm -r config/environments/development.rb"
   copy_file "config/environments/development.rb", "config/environments/development.rb"
