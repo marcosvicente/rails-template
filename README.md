@@ -1,6 +1,6 @@
 # Rails templete
 
 ## Exemple
-''' shell
+``` shell
 $ rails new . -m ~/rails_template/template.rb
-'''
+```

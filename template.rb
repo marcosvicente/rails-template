@@ -88,6 +88,11 @@ def devops
   say "docker build ."
 end
 
+def readme
+  run "rm -rf README.md"
+  copy_file "readme_rails.md", "README.md"
+end
+
 def main
   config_bundle
   environments_development
@@ -95,6 +100,7 @@ def main
   utils_dev
   config_test
   devops
+  readme
 
 end
 
