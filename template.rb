@@ -10,6 +10,11 @@ def config_bundle
 
 end
 
+def database
+  run "rm -r config/database.yml"
+  copy_file "config/database.yml", "config/database.yml"
+
+end
 def mailcatcher_config
   run "gem install mailcatcher"
   say "install mailcatcher"
@@ -75,6 +80,7 @@ end
 def main
   config_bundle
   environments_development
+  database
   config_test
 
 end

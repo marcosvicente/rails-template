@@ -1,0 +1,23 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: 123
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  host: localhost
+  database: project_development
+
+test:
+  <<: *default
+  host: localhost
+  database: project_test
+
+production:
+  <<: *default
+  database: project_production
+  username: project
+  password: <%= ENV['IMOBILI_DATABASE_PASSWORD'] %>
