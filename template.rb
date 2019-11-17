@@ -16,11 +16,21 @@ def gems_test
     gem 'simplecov'
   end
 
+  say "Put gems to test"
 end
 
+def config_rspec
+  rails_command "generate rspec:install"
+
+  say "config rspec"
+end
 
 def config_test 
   gems_test
+  config_rspec
+
+  # remove mine test
+  run "rm -rf test/"
 end
 
 
